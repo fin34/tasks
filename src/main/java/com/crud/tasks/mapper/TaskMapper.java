@@ -17,7 +17,7 @@ public class TaskMapper {
                 taskDto.getContent());
     }
 
-    public TaskDto mapToTasskDto(final Task task) {
+    public TaskDto mapToTaskDto(final Task task) {
         return new TaskDto(
                 task.getId(),
                 task.getTitle(),
