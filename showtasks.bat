@@ -5,7 +5,6 @@ echo Run Crud has errors - breaking work
 goto fail
 
 :runwebbrowser
-call cd C:\Program Files\Mozilla Firefox
 start firefox.exe localhost:8080/crud/v1/task/getTasks
 goto end
 
