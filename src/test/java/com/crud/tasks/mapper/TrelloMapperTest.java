@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.Assert.*;
 
 public class TrelloMapperTest {
@@ -34,5 +35,11 @@ public class TrelloMapperTest {
         //Then
         assertEquals(2, resultMapToBoardsDto.size());
         assertEquals(2, resultMapToBoard.size());
+        assertEquals("1", resultMapToBoardsDto.get(0).getId());
+        assertEquals("Board one", resultMapToBoardsDto.get(0).getName());
+
+        assertThat(resultMapToBoardsDto.get(0).getLists()).extracting("id", "name", "isClosed")
+                .contains(tuple("1", "Test one", true),
+                          tuple("2", "Test two", true));
     }
 }
