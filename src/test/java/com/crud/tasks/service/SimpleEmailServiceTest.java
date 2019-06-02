@@ -26,16 +26,13 @@ public class SimpleEmailServiceTest {
     public void shouldSendEmail() {
         //Given
         Mail mail = new Mail("Test@test.com", "Test", "test message", "test");
-
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setCc(mail.getToCc());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-
         //When
         simpleEmailService.send(mail);
-
         //Then
         verify(javaMailSender, times(1)).send(mailMessage);
 
