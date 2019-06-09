@@ -42,4 +42,24 @@ public class TrelloMapperTest {
                 .contains(tuple("1", "Test one", true),
                           tuple("2", "Test two", true));
     }
+
+    @Test
+    public void testMapToCardDtoAndMapToCard() {
+        //Given
+        TrelloMapper trelloMapper = new TrelloMapper();
+        TrelloCard trelloCard = new TrelloCard("Test name", "Test description", "Test pos", "Test id");
+        TrelloCardDto trelloCardDto = new TrelloCardDto("Test name", "Test description", "Test pos", "Test id");
+        //When
+
+        //Then
+        assertEquals("Test name", trelloMapper.mapToCardDto(trelloCard).getName());
+        assertEquals("Test description", trelloMapper.mapToCardDto(trelloCard).getDescription());
+        assertEquals("Test pos", trelloMapper.mapToCardDto(trelloCard).getPos());
+        assertEquals("Test id", trelloMapper.mapToCardDto(trelloCard).getListId());
+
+        assertEquals("Test name", trelloMapper.mapToCard(trelloCardDto).getName());
+        assertEquals("Test description", trelloMapper.mapToCard(trelloCardDto).getDescription());
+        assertEquals("Test pos", trelloMapper.mapToCard(trelloCardDto).getPos());
+        assertEquals("Test id", trelloMapper.mapToCard(trelloCardDto).getListId());
+    }
 }
