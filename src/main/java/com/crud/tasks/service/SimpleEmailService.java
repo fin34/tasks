@@ -39,10 +39,11 @@ public class SimpleEmailService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            if(mail.getSubject().contains("New Trello Card")) {
+            if(mail.getSubject().equals("Tasks: New Trello Card")) {
                 messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+            } else {
+                messageHelper.setText(mailCreatorService.buildNumberOfTasksMail(mail.getMessage()), true);
             }
-            messageHelper.setText(mailCreatorService.buildNumberOfTasksMail(mail.getMessage()), true);
         };
     }
 
